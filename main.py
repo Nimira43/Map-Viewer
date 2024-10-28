@@ -26,8 +26,6 @@ class App(ctk.CTk):
     location = geolocator.geocode(self.input_string.get())
     print(location)
 
-
-
 class MapWidget(tkintermapview.TkinterMapView):
   def __init__(self, parent, input_string, submit_location):
     super().__init__(master = parent)

@@ -22,7 +22,9 @@ class App(ctk.CTk):
     self.mainloop()
 
   def submit_location(self, event):
-    print(self.i
+    geolocator = Nominatim(user_agent = 'my_user')
+    location = geolocator.geocode(self.input_string.get)
+    print(location)
 
 
 

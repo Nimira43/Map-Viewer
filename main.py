@@ -1,6 +1,7 @@
 import customtkinter as ctk
 from settings import *
 import tkintermapview
+from geopy.geocoders import Nominatim
 
 class App(ctk.CTk):
   def __init__(self):
@@ -21,7 +22,7 @@ class App(ctk.CTk):
     self.mainloop()
 
   def submit_location(self, event):
-    print(self.input_string.get())
+    print(self.i
 
 
 

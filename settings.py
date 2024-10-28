@@ -4,12 +4,13 @@ PAINT_URL = 'http://c.tile.stamen.com/watercolor/{z}/{x}/{y}.png'
 
 COLOUR_RANGE = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F']
 ENTRY_BG = '#111'
-SIDE_PANEL_BG = '#eee'
+BORDER_BG = '#ff2200'
+SIDE_PANEL_BG = '#111'
 HISTORY_HOVER_COLOUR = '#aaa'
 BUTTON_COLOUR = '#ff4500'
-BUTTON_HOVER_COLOUR = 'ffd700'
+BUTTON_HOVER_COLOUR = 'ff2200'
 
-TEXT_FONT = 'helvetica'
+TEXT_FONT = 'verdana'
 TEXT_SIZE = 14
 TEXT_COLOUR = '#ff4500'
 CLOSE_ITEM_COLOUR = '#555'

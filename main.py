@@ -35,6 +35,7 @@ class LocationEntry(ctk.CTkEntry):
       corner_radius = 0,
       border_width = 4,
       fg_color = ENTRY_BG,
+      border_color = BORDER_BG,
       text_color = TEXT_COLOUR,
       font = ctk.CTkFont(family = TEXT_FONT, size = TEXT_SIZE))
     self.place(relx = 0.5, rely = 0.95, anchor = 'center')

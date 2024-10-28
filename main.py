@@ -50,5 +50,4 @@ class LocationEntry(ctk.CTkEntry):
     self.place(relx = 0.5, rely = 0.95, anchor = 'center')
     self.bind('<Return>', submit_location)
 
-
 App()

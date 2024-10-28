@@ -22,7 +22,7 @@ class App(ctk.CTk):
 class MapWidget(tkintermapview.TkinterMapView):
   def __init__(self, parent):
     super().__init__(master = parent)
-    self.grid(row = 0, column = 1)
+    self.grid(row = 0, column = 1, sticky = 'nsew')
 
 
 App()

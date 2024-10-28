@@ -5,7 +5,7 @@ import tkintermapview
 class App(ctk.CTk):
   def __init__(self):
     super().__init__()
-    ctk.set_appearance_mode('light')
+    ctk.set_appearance_mode('dark')
     self.geometry('1200x800+100+50')
     self.minsize(800,600)
     self.title('Map Viewer')
@@ -29,7 +29,14 @@ class MapWidget(tkintermapview.TkinterMapView):
 
 class LocationEntry(ctk.CTkEntry):
   def __init__(self, parent, input_string):
-    super().__init__(master = parent, textvariable = input_string)
+    super().__init__(
+      master = parent, 
+      textvariable = input_string,
+      corner_radius = 0,
+      border_width = 4,
+      fg_color = ENTRY_BG,
+      text_color = TEXT_COLOUR,
+      font = ctk.CTkFont(family = TEXT_FONT, size = TEXT_SIZE))
     self.place(relx = 0.5, rely = 0.95, anchor = 'center')
 
 

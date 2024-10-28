@@ -13,7 +13,7 @@ class App(ctk.CTk):
 
     self.rowconfigure(0, weight = 1, uniform = 'a')
     self.columnconfigure(0, weight = 2, uniform = 'a')
-    self.columnconfigure(0, weight = 8, uniform = 'a')
+    self.columnconfigure(1, weight = 8, uniform = 'a')
     
     self.map_widget = MapWidget(self)
 
@@ -23,6 +23,7 @@ class MapWidget(tkintermapview.TkinterMapView):
   def __init__(self, parent):
     super().__init__(master = parent)
     self.grid(row = 0, column = 1, sticky = 'nsew')
+    self.set_tile_server(TERRAIN_URL)
 
 
 App()

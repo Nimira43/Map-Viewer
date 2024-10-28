@@ -15,20 +15,26 @@ class App(ctk.CTk):
     self.rowconfigure(0, weight = 1, uniform = 'a')
     self.columnconfigure(0, weight = 2, uniform = 'a')
     self.columnconfigure(1, weight = 8, uniform = 'a')
-    self.map_widget = MapWidget(self, self.input_string)
+    
+    self.map_widget = MapWidget(self, self.input_string, self.submit_location)
 
     self.mainloop()
 
+  def submit_location(self, event):
+    print(self.input_string.get())
+
+
+
 class MapWidget(tkintermapview.TkinterMapView):
-  def __init__(self, parent, input_string):
+  def __init__(self, parent, input_string, submit_location):
     super().__init__(master = parent)
     self.grid(row = 0, column = 1, sticky = 'nsew')
 
-    LocationEntry(self, input_string)
+    LocationEntry(self, input_string, submit_location)
     # self.set_tile_server(TERRAIN_URL)
 
 class LocationEntry(ctk.CTkEntry):
-  def __init__(self, parent, input_string):
+  def __init__(self, parent, input_string, submit_location):
     super().__init__(
       master = parent, 
       textvariable = input_string,
@@ -39,7 +45,7 @@ class LocationEntry(ctk.CTkEntry):
       text_color = TEXT_COLOUR,
       font = ctk.CTkFont(family = TEXT_FONT, size = TEXT_SIZE))
     self.place(relx = 0.5, rely = 0.95, anchor = 'center')
-
+    self.bind('<Return>', submit_location)
 
 
 App()

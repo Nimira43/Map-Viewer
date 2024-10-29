@@ -17,14 +17,18 @@ class App(ctk.CTk):
     self.columnconfigure(0, weight = 2, uniform = 'a')
     self.columnconfigure(1, weight = 8, uniform = 'a')
     
-    self.map_widget = MapWidget(self, self.input_string, self.submit_location)
+    self.map_widgt = MapWidget(self, self.input_string, self.submit_location)
 
     self.mainloop()
 
   def submit_location(self, event):
     geolocator = Nominatim(user_agent = 'my_user')
     location = geolocator.geocode(self.input_string.get())
-    print(location)
+    if location:
+      self.map_widgt.set_address(location.address)
+      self.input_string.set('')
+    else:
+      print('Invalid Entry')
 
 class MapWidget(tkintermapview.TkinterMapView):
   def __init__(self, parent, input_string, submit_location):

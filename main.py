@@ -40,8 +40,8 @@ class MapWidget(tkintermapview.TkinterMapView):
 
 class LocationEntry(ctk.CTkEntry):
   def __init__(self, parent, input_string, submit_location):
-    self.colour_index = 15
-    colour = COLOUR_RANGE[self.colour_index]
+    self.color_index = 15
+    color = COLOR_RANGE[self.color_index]
     self.error = False
 
     super().__init__(
@@ -50,8 +50,8 @@ class LocationEntry(ctk.CTkEntry):
       corner_radius = 0,
       border_width = 4,
       fg_color = ENTRY_BG,
-      border_color = f'#f{colour}{colour}',
-      text_color = TEXT_COLOUR,
+      border_color = f'#f{color}{color}',
+      text_color = TEXT_COLOR,
       font = ctk.CTkFont(family = TEXT_FONT, size = TEXT_SIZE))
     self.place(relx = 0.5, rely = 0.95, anchor = 'center')
     self.bind('<Return>', submit_location)
@@ -59,16 +59,16 @@ class LocationEntry(ctk.CTkEntry):
 
   def error_animation(self):
     self.error = True
-    if self.colour_index > 0:
-      self.colour_index -= 1
-      border_colour = f'f#{COLOUR_RANGE[self.colour_index]}{COLOUR_RANGE[self.colour_index]}'
-      text_colour = f'#{COLOUR_RANGE[-self.colour_index - 1]}00'
-      self.configure(border_colour = border_colour, text_colour = text_colour)
+    if self.color_index > 0:
+      self.color_index -= 1
+      border_color = f'f#{COLOR_RANGE[self.color_index]}{COLOR_RANGE[self.color_index]}'
+      text_color = f'#{COLOR_RANGE[-self.color_index - 1]}00'
+      self.configure(border_color = border_color, text_color = text_color)
       self.after(40, self.error_animation)
 
   def remove_error(self, *args):
     if self.error:
-      self.configure(border_colour = ENTRY_BG, text_color = TEXT_COLOUR)
-      self.colour_index = 15
+      self.configure(border_color = ENTRY_BG, text_color = TEXT_COLOR)
+      self.color_index = 15
 
 App()

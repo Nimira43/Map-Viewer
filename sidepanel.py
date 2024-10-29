@@ -33,7 +33,7 @@ class HistoryItem(ctk.CTkFrame):
 
 		ctk.CTkButton(
 			self, 
-			command = lambda: update_map(self.address),
+			command = lambda: update_map(self.address), 
 			text = address_string, 
 			font = font, 
 			anchor = 'w', 

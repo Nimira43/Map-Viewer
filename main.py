@@ -2,6 +2,7 @@ import customtkinter as ctk
 from settings import *
 import tkintermapview
 from geopy.geocoders import Nominatim
+from sidepanel import SidePanel
 
 class App(ctk.CTk):
   def __init__(self):
@@ -18,14 +19,16 @@ class App(ctk.CTk):
     self.columnconfigure(1, weight = 8, uniform = 'a')
     
     self.map_widget = MapWidget(self, self.input_string, self.submit_location)
+    self.side_panel = SidePanel(self, self.map_widget.set_style, self.map_widget.set_address)
 
     self.mainloop()
 
   def submit_location(self, event):
-    geolocator = Nominatim(user_agent = 'NimiraTech')
+    geolocator = Nominatim(user_agent = 'Nimira')
     location = geolocator.geocode(self.input_string.get())
     if location:
       self.map_widget.set_address(location.address)
+      self.side_panel.history_frame.add_location_entry(location)
       self.input_string.set('')
     else:
       self.map_widget.location_entry.error_animation()
@@ -36,7 +39,14 @@ class MapWidget(tkintermapview.TkinterMapView):
     self.grid(row = 0, column = 1, sticky = 'nsew')
 
     self.location_entry = LocationEntry(self, input_string, submit_location)
-    # self.set_tile_server(TERRAIN_URL)
+  
+  def set_style(self, view_style):
+    if view_style == 'map':
+      self.set_tile_server(MAIN_URL)
+    if view_style == 'terrain':
+      self.set_tile_server(TERRAIN_URL)
+    if view_style == 'paint':
+      self.set_tile_server(PAINT_URL)
 
 class LocationEntry(ctk.CTkEntry):
   def __init__(self, parent, input_string, submit_location):

@@ -20,7 +20,6 @@ class App(ctk.CTk):
     
     self.map_widget = MapWidget(self, self.input_string, self.submit_location)
     self.side_panel = SidePanel(self, self.map_widget.set_style, self.map_widget.set_address)
-
     self.mainloop()
 
   def submit_location(self, event):
